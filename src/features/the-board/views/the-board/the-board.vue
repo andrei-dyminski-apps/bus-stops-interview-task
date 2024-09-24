@@ -6,6 +6,7 @@ import { TheHeader, TheTabs } from "../../components";
   <section class="d-flex flex-column gap-4">
     <TheHeader />
     <TheTabs />
+    <RouterView />
   </section>
 </template>
 

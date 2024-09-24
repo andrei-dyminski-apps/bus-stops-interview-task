@@ -9,13 +9,13 @@ defineProps<{
   <RouterLink
     :to="to"
     class="py-3 px-3 d-block text-decoration-none text-black"
-    active-class="border-primary border-bottom"
+    active-class="border-primary border-bottom router-link-active"
     >{{ name }}</RouterLink
   >
 </template>
 
 <style scoped>
-a:not(.router-link-active):not(.router-link-exact-active) {
+a:not(.router-link-active) {
   opacity: 0.5;
 }
 </style>

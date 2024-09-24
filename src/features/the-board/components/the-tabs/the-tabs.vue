@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { TheTab } from "../the-tab";
+import { LINES_ROUTE, STOPS_ROUTE } from "@/constants/router";
 </script>
 
 <template>
   <ul class="d-flex px-3 gap-3 list-group-horizontal bg-white">
     <li>
-      <TheTab to="/lines" name="Bus Lines" />
+      <TheTab :to="LINES_ROUTE" name="Bus Lines" />
     </li>
     <li>
-      <TheTab to="/stops" name="Stops" />
+      <TheTab :to="STOPS_ROUTE" name="Stops" />
     </li>
   </ul>
 </template>
