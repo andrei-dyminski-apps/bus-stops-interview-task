@@ -3,7 +3,7 @@ import { TheHeader, TheTabs } from "../../components";
 </script>
 
 <template>
-  <section class="d-flex flex-column gap-4">
+  <section class="d-flex flex-column gap-2">
     <TheHeader />
     <TheTabs />
     <RouterView />

@@ -7,9 +7,9 @@ const store = useStore();
 </script>
 
 <template>
-  <section class="d-flex flex-column gap-3 px-3 py-3 bg-white">
+  <section class="d-flex flex-column gap-2 px-4 py-2 bg-white">
     <header class="py-3">
-      <h2>Select bus line</h2>
+      <h2 class="title">Select bus line</h2>
     </header>
     <ul class="d-flex flex-wrap gap-2">
       <li v-for="{ line } in store.state.lines" :key="line">
@@ -19,4 +19,8 @@ const store = useStore();
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.title {
+  font-size: 1rem;
+}
+</style>
