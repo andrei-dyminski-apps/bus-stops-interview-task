@@ -5,22 +5,26 @@ export type Stop = {
   time: string;
 };
 
-type Times = string[];
+type Time = {
+  order: number;
+  time: string;
+};
 
 type StopObject = {
+  order: number;
   stop: string;
-  times: Times;
+  times: Time[];
 };
 
 export type LineObject = {
-  line: number;
   order: number;
+  line: number;
   stops: Record<string, StopObject>;
 };
 
 export type Line = {
-  line: number;
   order: number;
+  line: number;
   stops: StopObject[];
 };
 
