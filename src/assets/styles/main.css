@@ -7,3 +7,8 @@ body {
     overflow-y: auto;
     background: aliceblue;
 }
+
+ul,
+ol {
+    padding: 0;
+}
