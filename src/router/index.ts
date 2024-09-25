@@ -16,9 +16,16 @@ const routes: Array<RouteRecordRaw> = [
         component: TheLines,
         children: [
           {
-            path: `:id(\\d+)`,
+            path: `:line(\\d+)`,
             name: "Line",
             component: TheLines,
+            children: [
+              {
+                path: `:stop`,
+                name: "LineStop",
+                component: TheLines,
+              },
+            ],
           },
         ],
       },
@@ -28,7 +35,7 @@ const routes: Array<RouteRecordRaw> = [
         component: TheStops,
         children: [
           {
-            path: `:id(\\d+)`,
+            path: `:stop`,
             name: "Stop",
             component: TheStops,
           },

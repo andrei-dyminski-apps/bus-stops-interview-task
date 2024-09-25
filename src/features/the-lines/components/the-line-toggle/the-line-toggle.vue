@@ -1,12 +1,12 @@
 <script setup lang="ts">
 defineProps<{
   to: string;
-  name: string;
+  name: number;
 }>();
 </script>
 
 <template>
-  <RouterLink :to="to" class="btn btn-primary" exact-active-class="btn-dark">{{
+  <RouterLink :to="to" class="btn btn-primary" active-class="btn-dark">{{
     name
   }}</RouterLink>
 </template>

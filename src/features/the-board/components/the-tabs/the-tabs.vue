@@ -4,7 +4,7 @@ import { LINES_ROUTE, STOPS_ROUTE } from "@/constants/router";
 </script>
 
 <template>
-  <ul class="d-flex px-4 gap-3 list-group-horizontal bg-white">
+  <ul class="d-flex px-4 gap-3 list-group-horizontal bg-white rounded-2">
     <li>
       <TheTab :to="LINES_ROUTE" name="Bus Lines" />
     </li>

@@ -5,27 +5,24 @@ export type Stop = {
   time: string;
 };
 
-type Time = {
-  order: number;
-  time: string;
+export type Time = {
+  name: string;
 };
 
-type StopObject = {
+export type LineStop = {
   order: number;
-  stop: string;
+  name: string;
   times: Time[];
 };
 
 export type LineObject = {
-  order: number;
-  line: number;
-  stops: Record<string, StopObject>;
+  name: string;
+  stops: Record<string, LineStop>;
 };
 
 export type Line = {
-  order: number;
-  line: number;
-  stops: StopObject[];
+  name: string;
+  stops: LineStop[];
 };
 
 export type RootState = {

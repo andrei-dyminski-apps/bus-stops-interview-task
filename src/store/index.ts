@@ -1,12 +1,15 @@
 import { createStore } from "vuex";
 import { getStops } from "@/api/lines";
 import {
+  GET_LINE_GETTER,
+  GET_STOP_GETTER,
   GET_STOPS_ACTION,
   SET_LINES_MUTATION,
   SET_STOPS_MUTATION,
 } from "@/constants/store";
-import { prepareLinesFromStops } from "@/utils/store";
-import type { RootState, Stop } from "@/types/store";
+import { prepareLinesFromStops } from "@/utils/process-store";
+import { convertStringToKebabCase } from "@/utils/convert-string";
+import type { Line, LineStop, RootState, Stop } from "@/types/store";
 
 export default createStore<RootState>({
   state() {
@@ -15,7 +18,18 @@ export default createStore<RootState>({
       lines: null,
     };
   },
-  getters: {},
+  getters: {
+    [GET_LINE_GETTER]:
+      (state) =>
+      (line: string): Line | null =>
+        state.lines?.find(({ name }) => name === line) ?? null,
+    [GET_STOP_GETTER]:
+      (_, getters) =>
+      (line: string, stop: string): Line | null =>
+        getters[GET_LINE_GETTER](line)?.stops.find(
+          ({ name }: LineStop) => convertStringToKebabCase(name) === stop,
+        ) ?? null,
+  },
   mutations: {
     [SET_STOPS_MUTATION](state, stops) {
       state.stops = stops;
