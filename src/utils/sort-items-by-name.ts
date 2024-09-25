@@ -1,14 +1,16 @@
 import { SortTypes } from "@/types/sorting";
-import type { Line, Time } from "@/types/store";
+import type { LineItem, Time } from "@/types/store";
 
 export const SORT_FUNCTIONS_BY_NAME = {
-  [SortTypes.ASC]: <T extends Line | Time = Line>(a: T, b: T): number =>
+  [SortTypes.ASC]: <T extends LineItem | Time = LineItem>(a: T, b: T): number =>
     a.name.localeCompare(b.name),
-  [SortTypes.DESC]: <T extends Line | Time = Line>(a: T, b: T): number =>
-    b.name.localeCompare(a.name),
+  [SortTypes.DESC]: <T extends LineItem | Time = LineItem>(
+    a: T,
+    b: T,
+  ): number => b.name.localeCompare(a.name),
 };
 
-export const sortItemsByNameField = <T extends Line | Time = Line>(
+export const sortItemsByNameField = <T extends LineItem | Time = LineItem>(
   items: T[] | undefined,
   order: SortTypes,
 ): T[] => (items ? [...items].sort(SORT_FUNCTIONS_BY_NAME[order]) : []);

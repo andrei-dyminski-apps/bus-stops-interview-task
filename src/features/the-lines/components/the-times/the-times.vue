@@ -8,11 +8,12 @@ import {
   LINE_PLACEHOLDER,
   STOP_PLACEHOLDER,
 } from "@/features/the-lines/constants/placeholders";
-import { SortTypes } from "@/types/sorting";
 import { sortItemsByNameField } from "@/utils/sort-items-by-name";
 import { TheSortToggle } from "@/components/the-sort-toggle";
+import { STORE_KEY } from "@/store";
+import { SortTypes } from "@/types/sorting";
 
-const store = useStore();
+const store = useStore(STORE_KEY);
 const route = useRoute();
 
 const lineItem = computed(() =>

@@ -4,8 +4,9 @@ import { useStore } from "vuex";
 import { GET_STOPS_ACTION } from "@/constants/store";
 import { TheStops } from "../../components";
 import { TheTimes } from "../../components";
+import { STORE_KEY } from "@/store";
 
-const store = useStore();
+const store = useStore(STORE_KEY);
 store.dispatch(GET_STOPS_ACTION);
 </script>
 

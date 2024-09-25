@@ -1,4 +1,3 @@
-import { createStore } from "vuex";
 import { getStops } from "@/api/lines";
 import {
   GET_LINE_GETTER,
@@ -7,9 +6,13 @@ import {
   SET_LINES_MUTATION,
   SET_STOPS_MUTATION,
 } from "@/constants/store";
-import { prepareLinesFromStops } from "@/utils/process-store";
+import { prepareLinesFromStops, processStops } from "@/utils/process-store";
 import { convertStringToKebabCase } from "@/utils/convert-string";
-import type { Line, LineStop, RootState, Stop } from "@/types/store";
+import { createStore, type Store } from "vuex";
+import type { InjectionKey } from "vue";
+import type { LineItem, LineStop, RootState, Stop } from "@/types/store";
+
+export const STORE_KEY: InjectionKey<Store<RootState>> = Symbol();
 
 export default createStore<RootState>({
   state() {
@@ -21,18 +24,18 @@ export default createStore<RootState>({
   getters: {
     [GET_LINE_GETTER]:
       (state) =>
-      (line: string): Line | null =>
+      (line: string): LineItem | null =>
         state.lines?.find(({ name }) => name === line) ?? null,
     [GET_STOP_GETTER]:
       (_, getters) =>
-      (line: string, stop: string): Line | null =>
+      (line: string, stop: string): LineItem | null =>
         getters[GET_LINE_GETTER](line)?.stops.find(
           ({ name }: LineStop) => convertStringToKebabCase(name) === stop,
         ) ?? null,
   },
   mutations: {
     [SET_STOPS_MUTATION](state, stops) {
-      state.stops = stops;
+      state.stops = processStops(stops);
     },
     [SET_LINES_MUTATION](state, stops: Stop[]) {
       state.lines = prepareLinesFromStops(stops);

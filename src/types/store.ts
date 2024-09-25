@@ -1,8 +1,13 @@
 export type Stop = {
+  order: number;
   line: number;
   stop: string;
-  order: number;
   time: string;
+};
+
+export type StopItem = {
+  order: number;
+  name: string;
 };
 
 export type Time = {
@@ -20,12 +25,12 @@ export type LineObject = {
   stops: Record<string, LineStop>;
 };
 
-export type Line = {
+export type LineItem = {
   name: string;
   stops: LineStop[];
 };
 
-export type RootState = {
-  stops: Stop[] | null;
-  lines: Line[] | null;
-};
+export interface RootState {
+  stops: StopItem[] | null;
+  lines: LineItem[] | null;
+}

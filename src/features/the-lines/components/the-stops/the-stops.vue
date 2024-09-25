@@ -6,11 +6,12 @@ import { GET_LINE_GETTER } from "@/constants/store";
 import { ThePlaceholder } from "../the-placeholder";
 import { TheStopToggle } from "../the-stop-toggle";
 import { LINE_PLACEHOLDER } from "@/features/the-lines/constants/placeholders";
-import { SortTypes } from "@/types/sorting";
 import { TheSortToggle } from "@/components/the-sort-toggle";
 import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
+import { STORE_KEY } from "@/store";
+import { SortTypes } from "@/types/sorting";
 
-const store = useStore();
+const store = useStore(STORE_KEY);
 const route = useRoute();
 
 const lineItem = computed(() =>

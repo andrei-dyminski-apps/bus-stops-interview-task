@@ -2,8 +2,9 @@
 import { useStore } from "vuex";
 import { TheLineToggle } from "../the-line-toggle";
 import { LINES_ROUTE } from "@/constants/router";
+import { STORE_KEY } from "@/store";
 
-const store = useStore();
+const store = useStore(STORE_KEY);
 </script>
 
 <template>

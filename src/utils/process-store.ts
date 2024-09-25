@@ -1,9 +1,12 @@
 import { sortItemsByNameField } from "@/utils/sort-items-by-name";
-import { SortTypes } from "@/types/sorting";
 import { completeTime } from "@/utils/complete-time";
-import type { Line, LineObject, Stop } from "@/types/store";
+import { SortTypes } from "@/types/sorting";
+import type { LineItem, LineObject, Stop, StopItem } from "@/types/store";
 
-export const prepareLinesFromStops = (stops: Stop[]): Line[] => {
+export const processStops = (stops: Stop[]): StopItem[] =>
+  stops.map(({ order, stop }) => ({ order, name: stop }));
+
+export const prepareLinesFromStops = (stops: Stop[]): LineItem[] => {
   const items = Object.values(
     stops.reduce(
       (acc, { order, line, stop, time }) => {
