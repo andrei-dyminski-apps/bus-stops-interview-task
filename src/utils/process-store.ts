@@ -1,4 +1,4 @@
-import { sortItemsByNameField } from "@/utils/sort-items";
+import { sortItemsByNameField } from "@/utils/sort-items-by-name";
 import { SortTypes } from "@/types/sorting";
 import { completeTime } from "@/utils/complete-time";
 import type { Line, LineObject, Stop } from "@/types/store";

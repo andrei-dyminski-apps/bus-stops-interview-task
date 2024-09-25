@@ -8,7 +8,7 @@ import { TheStopToggle } from "../the-stop-toggle";
 import { LINE_PLACEHOLDER } from "@/features/the-lines/constants/placeholders";
 import { SortTypes } from "@/types/sorting";
 import { TheSortToggle } from "@/components/the-sort-toggle";
-import { sortItemsByOrderField } from "@/utils/sort-items";
+import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
 
 const store = useStore();
 const route = useRoute();

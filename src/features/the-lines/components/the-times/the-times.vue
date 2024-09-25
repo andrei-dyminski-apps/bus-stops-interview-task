@@ -9,7 +9,7 @@ import {
   STOP_PLACEHOLDER,
 } from "@/features/the-lines/constants/placeholders";
 import { SortTypes } from "@/types/sorting";
-import { sortItemsByNameField } from "@/utils/sort-items";
+import { sortItemsByNameField } from "@/utils/sort-items-by-name";
 import { TheSortToggle } from "@/components/the-sort-toggle";
 
 const store = useStore();
