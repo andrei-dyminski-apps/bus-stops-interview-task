@@ -12,7 +12,15 @@ const handleInput = (event: Event) =>
 </script>
 
 <template>
-  <input :value="modelValue" type="text" @input="handleInput" />
+  <label class="position-relative">
+    <input
+      :value="modelValue"
+      class="px-3 border border-1 border-dark py-2 border-opacity-25 rounded-2"
+      type="text"
+      @input="handleInput"
+    />
+    <img src="" alt="" />
+  </label>
 </template>
 
 <style scoped></style>
