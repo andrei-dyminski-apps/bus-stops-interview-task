@@ -27,10 +27,10 @@ const sortedStops = computed(() =>
   <section class="times d-flex flex-column rounded-2 bg-white">
     <template v-if="lineItem">
       <header class="px-4 border-bottom border-opacity-50 py-3">
-        <h3 class="py-2 title">Bus line: {{ lineItem.line }}</h3>
-        <div class="py-2 d-flex align-items-center">
+        <h3 class="py-2 title">Bus line: {{ lineItem.name }}</h3>
+        <h4 class="py-2 d-flex align-items-center subtitle">
           Bus stops <TheSortToggle v-model="sortType" />
-        </div>
+        </h4>
       </header>
       <ul class="overflow-auto">
         <li v-for="{ name } in sortedStops" :key="name">
@@ -46,7 +46,12 @@ const sortedStops = computed(() =>
 .times {
   height: 50vh;
 }
+
 .title {
   font-size: 1rem;
+}
+
+.subtitle {
+  font-size: 0.8rem;
 }
 </style>
