@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { TheLinesList } from "../../components";
-import { TheStops } from "../../components";
-import { TheTimes } from "../../components";
+import { TheLinesList, TheStops, TheTimes } from "../../components";
 </script>
 
 <template>
