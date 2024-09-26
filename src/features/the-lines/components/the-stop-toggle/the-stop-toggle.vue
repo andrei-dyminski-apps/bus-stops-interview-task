@@ -4,7 +4,7 @@ import { toRefs } from "vue";
 import { convertStringToKebabCase } from "@/utils/convert-string";
 
 const props = defineProps<{
-  line: number;
+  line: string;
   stop: string;
 }>();
 const { stop, line } = toRefs(props);

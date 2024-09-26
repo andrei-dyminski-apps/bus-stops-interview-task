@@ -35,7 +35,7 @@ const sortedTimes = computed(() =>
 </script>
 
 <template>
-  <section class="times d-flex flex-column rounded-2 bg-white">
+  <section class="d-flex flex-column rounded-2 bg-white">
     <template v-if="stopItem">
       <header class="px-4 border-bottom border-opacity-50 py-3">
         <h3 class="py-2 title">Bus stop: {{ stopItem.name }}</h3>
@@ -43,7 +43,7 @@ const sortedTimes = computed(() =>
           Time <TheSortToggle v-model="sortType" />
         </h4>
       </header>
-      <ul class="overflow-auto">
+      <ul class="overflow-auto flex-grow-1 list">
         <li
           v-for="{ name } in sortedTimes"
           :key="name"
@@ -58,15 +58,15 @@ const sortedTimes = computed(() =>
 </template>
 
 <style scoped>
-.times {
-  height: 50vh;
-}
-
 .title {
   font-size: 1rem;
 }
 
 .subtitle {
   font-size: 0.8rem;
+}
+
+.list {
+  height: 10px;
 }
 </style>

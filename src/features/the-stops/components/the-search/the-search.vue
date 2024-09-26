@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SearchIcon from "@/assets/icons/search.svg";
+
 const emit = defineEmits<{
   (e: "update:modelValue", value: string): void;
 }>();
@@ -12,15 +14,23 @@ const handleInput = (event: Event) =>
 </script>
 
 <template>
-  <label class="position-relative">
+  <label class="position-relative w-25">
     <input
       :value="modelValue"
-      class="px-3 border border-1 border-dark py-2 border-opacity-25 rounded-2"
+      class="px-3 w-100 border border-1 border-dark py-2 border-opacity-25 rounded-2"
       type="text"
       @input="handleInput"
     />
-    <img src="" alt="" />
+    <SearchIcon class="position-absolute top-50 icon" />
   </label>
 </template>
 
-<style scoped></style>
+<style scoped>
+.icon {
+  width: 24px;
+  height: 24px;
+  right: 8px;
+  transform: translateY(-50%);
+  color: gray;
+}
+</style>
