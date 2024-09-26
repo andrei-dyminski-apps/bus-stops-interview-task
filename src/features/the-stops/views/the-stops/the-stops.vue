@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useStore } from "vuex";
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import { TheSortToggle } from "@/components/the-sort-toggle";
 import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
@@ -13,6 +13,8 @@ const store = useStore(STORE_KEY);
 const router = useRouter();
 
 const query = ref(router.currentRoute.value.query.search?.toString() || "");
+watch(query, (value) => router.push({ query: { search: value } }));
+
 const filteredStops = computed(
   () =>
     store.state.stops?.filter((stop) =>
@@ -36,7 +38,7 @@ const sortedStops = computed(() =>
         Bus stops <TheSortToggle v-model="sortType" />
       </h4>
     </header>
-    <TheStopsList :items="sortedStops" />
+    <TheStopsList :items="sortedStops" :query="query" />
   </section>
 </template>
 

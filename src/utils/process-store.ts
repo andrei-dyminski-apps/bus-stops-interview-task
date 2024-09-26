@@ -4,7 +4,12 @@ import { SortTypes } from "@/types/sorting";
 import type { LineItem, LineObject, Stop, StopItem } from "@/types/store";
 
 export const processStops = (stops: Stop[]): StopItem[] =>
-  stops.map(({ order, stop }) => ({ order, name: stop }));
+  Object.values(
+    stops.reduce(
+      (acc, { order, stop }) => ({ ...acc, [stop]: { order, name: stop } }),
+      {} as Record<string, StopItem>,
+    ),
+  );
 
 export const prepareLinesFromStops = (stops: Stop[]): LineItem[] => {
   const items = Object.values(
