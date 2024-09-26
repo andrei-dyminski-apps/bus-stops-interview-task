@@ -5,7 +5,7 @@ import { useRoute } from "vue-router";
 import { GET_LINE_GETTER } from "@/constants/store";
 import { ThePlaceholder } from "../the-placeholder";
 import { TheStopToggle } from "../the-stop-toggle";
-import { LINE_PLACEHOLDER } from "@/features/the-lines/constants/placeholders";
+import { LINE_PLACEHOLDER } from "../../constants";
 import { TheSortToggle } from "@/components/the-sort-toggle";
 import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
 import { STORE_KEY } from "@/store";

@@ -4,10 +4,7 @@ import { computed, ref } from "vue";
 import { useRoute } from "vue-router";
 import { GET_LINE_GETTER, GET_STOP_GETTER } from "@/constants/store";
 import { ThePlaceholder } from "../the-placeholder";
-import {
-  LINE_PLACEHOLDER,
-  STOP_PLACEHOLDER,
-} from "@/features/the-lines/constants/placeholders";
+import { LINE_PLACEHOLDER, STOP_PLACEHOLDER } from "../../constants";
 import { sortItemsByNameField } from "@/utils/sort-items-by-name";
 import { TheSortToggle } from "@/components/the-sort-toggle";
 import { STORE_KEY } from "@/store";

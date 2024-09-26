@@ -4,7 +4,7 @@ import { computed, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import { TheSortToggle } from "@/components/the-sort-toggle";
 import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
-import { TheSearch, TheStopsList } from "@/features/the-stops/components";
+import { TheSearch, TheStopsList } from "../../components";
 import { STORE_KEY } from "@/store";
 import { SortTypes } from "@/types/sorting";
 import type { StopItem } from "@/types/store";

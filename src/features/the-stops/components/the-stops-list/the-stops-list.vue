@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { StopItem } from "@/types/store";
-import { highlightQueryString } from "@/features/the-stops/utils/highlight-query-string";
+import { highlightQueryString } from "../../utils";
 
 defineProps<{
   items: StopItem[];
