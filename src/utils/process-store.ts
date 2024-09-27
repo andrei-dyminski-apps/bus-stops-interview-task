@@ -6,7 +6,10 @@ import type { LineItem, LineObject, Stop, StopItem } from "@/types/store";
 export const processStops = (stops: Stop[]): StopItem[] =>
   Object.values(
     stops.reduce(
-      (acc, { order, stop }) => ({ ...acc, [stop]: { order, name: stop } }),
+      (acc, { order, stop }) => {
+        acc[stop] = { order, name: stop };
+        return acc;
+      },
       {} as Record<string, StopItem>,
     ),
   );
