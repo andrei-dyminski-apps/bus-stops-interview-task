@@ -1,14 +1,19 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import {
+  createRouter,
+  createWebHistory,
+  type RouteRecordRaw,
+} from "vue-router";
 import { LINES_ROUTE, STOPS_ROUTE } from "@/constants/router";
 
 const TheLines = () => import("@/views/the-lines.vue");
 const TheStops = () => import("@/views/the-stops.vue");
+const TheHome = () => import("@/views/the-home.vue");
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Home",
-    component: () => import("@/views/the-home.vue"),
+    component: TheHome,
     children: [
       {
         path: LINES_ROUTE,
