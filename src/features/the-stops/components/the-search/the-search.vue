@@ -2,7 +2,7 @@
 import SearchIcon from "@/assets/icons/search.svg";
 
 const emit = defineEmits<{
-  (e: "update:modelValue", value: string): void;
+  "update:modelValue": [value: string];
 }>();
 
 defineProps<{

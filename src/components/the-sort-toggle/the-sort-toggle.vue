@@ -3,7 +3,7 @@ import { toRefs } from "vue";
 import { SortTypes } from "@/types/sorting";
 
 const emit = defineEmits<{
-  (e: "update:modelValue", value: SortTypes): void;
+  "update:modelValue": [value: SortTypes];
 }>();
 
 const props = defineProps<{

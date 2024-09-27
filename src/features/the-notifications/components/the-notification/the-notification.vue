@@ -3,7 +3,7 @@ import CloseIcon from "@/assets/icons/close.svg";
 import { NotificationItem, NotificationType } from "../../types";
 
 const emit = defineEmits<{
-  (e: "removeNotification"): void;
+  removeNotification: [value: void];
 }>();
 
 defineProps<NotificationItem>();
