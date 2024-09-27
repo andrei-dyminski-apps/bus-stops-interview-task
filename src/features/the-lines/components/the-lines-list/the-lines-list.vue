@@ -10,7 +10,7 @@ const store = useStore(STORE_KEY);
 <template>
   <section class="d-flex flex-column gap-2 px-4 py-2 bg-white rounded-2">
     <header class="py-3">
-      <h2 class="title">Select bus line</h2>
+      <h2 class="h6">Select bus line</h2>
     </header>
     <ul class="d-flex flex-wrap gap-2">
       <li v-for="{ name } in store.state.lines" :key="name">
@@ -20,8 +20,4 @@ const store = useStore(STORE_KEY);
   </section>
 </template>
 
-<style scoped>
-.title {
-  font-size: 1rem;
-}
-</style>
+<style scoped></style>

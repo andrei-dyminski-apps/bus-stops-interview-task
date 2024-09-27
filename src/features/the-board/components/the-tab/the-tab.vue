@@ -9,7 +9,7 @@ defineProps<{
   <RouterLink
     :to="to"
     class="py-3 px-3 d-block text-decoration-none text-black"
-    active-class="border-primary border-bottom router-link-active"
+    active-class="border-primary border-bottom border-2 router-link-active"
     >{{ name }}</RouterLink
   >
 </template>

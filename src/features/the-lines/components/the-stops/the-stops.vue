@@ -29,10 +29,10 @@ const sortedStops = computed(() =>
   <section class="d-flex flex-column rounded-2 bg-white">
     <template v-if="lineItem">
       <header class="px-4 border-bottom border-opacity-50 py-3">
-        <h3 class="py-2 title">Bus line: {{ lineItem.name }}</h3>
-        <h4 class="py-2 d-flex align-items-center subtitle">
+        <h2 class="py-2 h6">Bus line: {{ lineItem.name }}</h2>
+        <h3 class="py-2 d-flex align-items-center subtitle">
           Bus stops <TheSortToggle v-model="sortType" />
-        </h4>
+        </h3>
       </header>
       <TheList
         :items="sortedStops"
@@ -48,10 +48,6 @@ const sortedStops = computed(() =>
 </template>
 
 <style scoped>
-.title {
-  font-size: 1rem;
-}
-
 .subtitle {
   font-size: 0.8rem;
 }

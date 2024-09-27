@@ -1,8 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-  <header class="py-3">
-    <h1 class="">Timetable</h1>
+  <header>
+    <h1 class="h2">Timetable</h1>
   </header>
 </template>
 
