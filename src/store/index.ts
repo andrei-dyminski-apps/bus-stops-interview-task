@@ -45,9 +45,9 @@ export default createStore<RootState>({
     async [GET_STOPS_ACTION]({ state, commit }) {
       try {
         if (state.stops) return;
-        const response = await getStops();
-        commit(SET_STOPS_MUTATION, response.data);
-        commit(SET_LINES_MUTATION, response.data);
+        const data = await getStops();
+        commit(SET_STOPS_MUTATION, data);
+        commit(SET_LINES_MUTATION, data);
       } catch (error) {
         console.error(error);
       }
