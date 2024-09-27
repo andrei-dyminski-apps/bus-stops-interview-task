@@ -26,7 +26,7 @@ export const loading: LoadingDirective = {
     loading.parent.style.position = "relative";
     loading.parent.insertAdjacentHTML(
       "beforeend",
-      `<div class="loader js-loader" data-type="${options?.type || ""}"></div>`,
+      `<div class="loader js-loader" data-type="${options?.type ?? ""}"></div>`,
     );
   },
 
@@ -46,9 +46,9 @@ export const loading: LoadingDirective = {
   },
 
   updated(el: HTMLElement, binding: DirectiveBinding) {
-    loading.parent = el.loaderParent || null;
+    loading.parent = el.loaderParent ?? null;
     const loader: HTMLElement | null =
-      loading.parent?.querySelector(":scope > .js-loader") || null;
+      loading.parent?.querySelector(":scope > .js-loader") ?? null;
 
     if (binding.value && !loader) {
       loading.insertLoader({ type: binding.arg });
@@ -59,7 +59,7 @@ export const loading: LoadingDirective = {
 
   unmounted() {
     const loader: HTMLElement | null =
-      loading.parent?.querySelector(":scope > .js-loader") || null;
+      loading.parent?.querySelector(":scope > .js-loader") ?? null;
     if (loader) loading.removeLoader(loader);
   },
 };

@@ -12,14 +12,14 @@ import type { StopItem } from "@/types/store";
 const store = useStore(STORE_KEY);
 const router = useRouter();
 
-const query = ref(router.currentRoute.value.query.search?.toString() || "");
+const query = ref(router.currentRoute.value.query.search?.toString() ?? "");
 watch(query, (value) => router.push({ query: { search: value } }));
 
 const filteredStops = computed(
   () =>
     store.state.stops?.filter((stop) =>
       stop.name.toLowerCase().includes(query.value.toLowerCase()),
-    ) || [],
+    ) ?? [],
 );
 
 const sortType = ref(SortTypes.ASC);

@@ -16,7 +16,7 @@ apiClient.interceptors.response.use(
     addNotification({
       type: NotificationType.ERROR,
       title: "Request failed",
-      description: error.message || "Something went wrong, please try again",
+      description: error?.message ?? "Something went wrong, please try again",
     });
     return Promise.reject(error);
   },
