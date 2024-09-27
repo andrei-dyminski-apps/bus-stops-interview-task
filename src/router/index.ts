@@ -1,9 +1,9 @@
+import { LINES_ROUTE, STOPS_ROUTE } from "@/constants/router";
 import {
   createRouter,
   createWebHistory,
   type RouteRecordRaw,
 } from "vue-router";
-import { LINES_ROUTE, STOPS_ROUTE } from "@/constants/router";
 
 const TheLines = () => import("@/views/the-lines.vue");
 const TheStops = () => import("@/views/the-stops.vue");
@@ -60,6 +60,11 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, _, next) => {
+  if (to.path === "/") next({ path: LINES_ROUTE });
+  next();
 });
 
 export default router;
