@@ -1,22 +1,24 @@
 <script setup lang="ts">
-import type { StopItem } from "@/types/store";
 import { highlightQueryString } from "../../utils";
+import { TheList } from "@/components/the-list";
+import { TheStopToggle } from "../the-stop-toggle";
+import { useRoute } from "vue-router";
+import type { StopItem } from "@/types/store";
 
 defineProps<{
   items: StopItem[];
   query: string;
 }>();
+
+const route = useRoute();
 </script>
 
 <template>
-  <ul class="overflow-auto flex-grow-1 list">
-    <li
-      v-for="{ name } in items"
-      :key="name"
-      class="px-4 py-3 border-bottom border-opacity-50 d-block text-decoration-none"
-      v-html="highlightQueryString(name, query)"
-    />
-  </ul>
+  <TheList :items="items" :active-item="route.params.stop?.toString()">
+    <template #item="{ item: { name } }">
+      <TheStopToggle :stop="highlightQueryString(name, query)" />
+    </template>
+  </TheList>
 </template>
 
 <style scoped>
