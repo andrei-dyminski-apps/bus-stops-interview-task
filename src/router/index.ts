@@ -29,6 +29,13 @@ const routes: Array<RouteRecordRaw> = [
                 path: `:stop`,
                 name: "LineStop",
                 component: TheLines,
+                children: [
+                  {
+                    path: `:time`,
+                    name: "LineTime",
+                    component: TheLines,
+                  },
+                ],
               },
             ],
           },
