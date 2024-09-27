@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CloseIcon from "@/assets/icons/close.svg";
-import type { NotificationItem } from "../../types";
+import { NotificationItem, NotificationType } from "../../types";
 
 const emit = defineEmits<{
   (e: "removeNotification"): void;
@@ -11,11 +11,20 @@ defineProps<NotificationItem>();
 
 <template>
   <section
-    class="d-flex gap-4 align-items-start rounded-2 bg-white notification px-4 py-4 border border-1 justify-content-between"
-    :class="type"
+    class="d-flex gap-4 align-items-start rounded-2 bg-white px-4 py-4 border border-1 justify-content-between"
   >
     <div class="d-flex flex-column gap-2">
-      <h3 class="title">{{ title }}</h3>
+      <h3
+        class="title"
+        :class="{
+          'text-warning': type === NotificationType.WARNING,
+          'table-success': type === NotificationType.SUCCESS,
+          'text-info': type === NotificationType.INFO,
+          'text-danger': type === NotificationType.ERROR,
+        }"
+      >
+        {{ title }}
+      </h3>
       <p v-if="description" class="p-0 m-0">{{ description }}</p>
     </div>
     <button
@@ -29,10 +38,6 @@ defineProps<NotificationItem>();
 </template>
 
 <style scoped lang="scss">
-.notification {
-  max-width: 500px;
-}
-
 .title {
   font-size: 1.25rem;
 }
