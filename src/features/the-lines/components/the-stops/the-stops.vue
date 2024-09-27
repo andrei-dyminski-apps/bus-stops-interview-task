@@ -9,6 +9,7 @@ import { LINE_PLACEHOLDER } from "../../constants";
 import { TheSortToggle } from "@/components/the-sort-toggle";
 import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
 import { STORE_KEY } from "@/store";
+import { TheList } from "@/components/the-list";
 import { SortTypes } from "@/types/sorting";
 
 const store = useStore(STORE_KEY);
@@ -33,11 +34,14 @@ const sortedStops = computed(() =>
           Bus stops <TheSortToggle v-model="sortType" />
         </h4>
       </header>
-      <ul class="overflow-auto flex-grow-1 list">
-        <li v-for="{ name } in sortedStops" :key="name">
+      <TheList
+        :items="sortedStops"
+        :active-item="route.params.stop?.toString()"
+      >
+        <template #item="{ item: { name } }">
           <TheStopToggle :stop="name" :line="lineItem.name" />
-        </li>
-      </ul>
+        </template>
+      </TheList>
     </template>
     <ThePlaceholder v-else :text="LINE_PLACEHOLDER" />
   </section>
@@ -50,9 +54,5 @@ const sortedStops = computed(() =>
 
 .subtitle {
   font-size: 0.8rem;
-}
-
-.list {
-  height: 10px;
 }
 </style>

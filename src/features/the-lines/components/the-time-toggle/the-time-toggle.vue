@@ -4,20 +4,21 @@ import { toRefs } from "vue";
 import { convertStringToKebabCase } from "@/utils/convert-string";
 
 const props = defineProps<{
+  time: string;
   line: string;
   stop: string;
 }>();
-const { stop, line } = toRefs(props);
-const path = `${LINES_ROUTE}/${line.value}/${convertStringToKebabCase(stop.value)}`;
+const { time, stop, line } = toRefs(props);
+const path = `${LINES_ROUTE}/${line.value}/${convertStringToKebabCase(stop.value)}/${convertStringToKebabCase(time.value)}`;
 </script>
 
 <template>
   <RouterLink
     :to="path"
     class="px-4 py-3 border-bottom border-opacity-50 d-block text-decoration-none"
-    active-class="text-primary router-link-exact-active"
+    exact-active-class="text-primary router-link-exact-active"
   >
-    {{ stop }}</RouterLink
+    {{ time }}</RouterLink
   >
 </template>
 

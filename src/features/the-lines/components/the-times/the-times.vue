@@ -8,6 +8,8 @@ import { LINE_PLACEHOLDER, STOP_PLACEHOLDER } from "../../constants";
 import { sortItemsByNameField } from "@/utils/sort-items-by-name";
 import { TheSortToggle } from "@/components/the-sort-toggle";
 import { STORE_KEY } from "@/store";
+import { TheList } from "@/components/the-list";
+import { TheTimeToggle } from "../the-time-toggle";
 import { SortTypes } from "@/types/sorting";
 
 const store = useStore(STORE_KEY);
@@ -40,15 +42,18 @@ const sortedTimes = computed(() =>
           Time <TheSortToggle v-model="sortType" />
         </h4>
       </header>
-      <ul class="overflow-auto flex-grow-1 list">
-        <li
-          v-for="{ name } in sortedTimes"
-          :key="name"
-          class="px-4 py-3 border-bottom border-opacity-50 d-block"
-        >
-          {{ name }}
-        </li>
-      </ul>
+      <TheList
+        :items="sortedTimes"
+        :active-item="route.params.time?.toString()"
+      >
+        <template #item="{ item: { name } }">
+          <TheTimeToggle
+            :time="name"
+            :line="lineItem.name"
+            :stop="stopItem.name"
+          />
+        </template>
+      </TheList>
     </template>
     <ThePlaceholder v-else :text="placeholderText" />
   </section>
