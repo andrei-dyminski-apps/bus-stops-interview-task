@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends LineStop | Time">
 import { convertStringToKebabCase } from "@/utils/convert-string";
-import { onMounted, ref, toRefs } from "vue";
+import { ref, toRefs } from "vue";
 import type { LineStop, Time } from "@/types/store";
 
 const props = defineProps<{
@@ -10,16 +10,21 @@ const props = defineProps<{
 const { activeItem } = toRefs(props);
 
 const listRef = ref<HTMLUListElement | null>(null);
-onMounted(() => {
+const handleMounted = () => {
   const item = listRef.value?.querySelector(
     `[data-name="${activeItem.value}"]`,
   );
-  if (item) setTimeout(() => item.scrollIntoView());
-});
+  if (item) item.scrollIntoView();
+};
 </script>
 
 <template>
-  <ul ref="listRef" class="overflow-auto flex-grow-1 list">
+  <ul
+    v-if="items.length"
+    ref="listRef"
+    class="overflow-auto flex-grow-1 list"
+    @vue:mounted="handleMounted"
+  >
     <li
       v-for="item in items"
       :key="item.name"
