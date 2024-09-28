@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useStore } from "vuex";
 import { computed, ref, watch } from "vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { TheSortToggle } from "@/components/the-sort-toggle";
 import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
 import { TheSearch, TheStopsList } from "../../components";
@@ -14,10 +14,11 @@ import type { StopItem } from "@/types/store";
 
 const store = useStore(STORE_KEY);
 const router = useRouter();
+const route = useRoute();
 
-const query = ref(getRouteQueryValue(router.currentRoute.value.query.search));
+const query = ref(getRouteQueryValue(route.query.search));
 watch(query, (value) =>
-  router.push({ path: STOPS_ROUTE, query: { search: value } }),
+  router.push({ path: STOPS_ROUTE, query: { ...route.query, search: value } }),
 );
 
 const filteredStops = computed(() =>
