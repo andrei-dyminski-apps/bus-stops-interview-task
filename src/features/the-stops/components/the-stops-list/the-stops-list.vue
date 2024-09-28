@@ -3,7 +3,7 @@ import { highlightQueryString } from "../../utils";
 import { TheList } from "@/components/the-list";
 import { TheStopToggle } from "../the-stop-toggle";
 import { useRoute } from "vue-router";
-import { getRouteParamValue } from "@/utils/route-param-value";
+import { getRouteParamValue } from "@/utils/get-route-param-value";
 import type { StopItem } from "@/types/store";
 
 defineProps<{
