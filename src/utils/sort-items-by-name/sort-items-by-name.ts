@@ -10,7 +10,7 @@ export const SORT_FUNCTIONS_BY_NAME = {
   ): number => b.name.localeCompare(a.name),
 };
 
-export const sortItemsByNameField = <T extends LineItem | Time = LineItem>(
+export const sortItemsByNameProp = <T extends LineItem | Time = LineItem>(
   items: T[] | undefined,
   order: SortTypes,
 ): T[] => (items ? [...items].sort(SORT_FUNCTIONS_BY_NAME[order]) : []);
