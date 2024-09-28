@@ -15,14 +15,14 @@ const path = `${LINES_ROUTE}/${line.value}/${convertStringToKebabCase(stop.value
   <RouterLink
     :to="path"
     class="px-4 py-3 border-bottom border-opacity-50 d-block text-decoration-none"
-    active-class="text-primary router-link-exact-active"
+    active-class="text-primary router-link-active"
   >
     {{ stop }}</RouterLink
   >
 </template>
 
 <style scoped>
-a:not(.router-link-exact-active) {
+a:not(.router-link-active) {
   color: var(--bs-dark);
 }
 </style>

@@ -21,8 +21,4 @@ const route = useRoute();
   </TheList>
 </template>
 
-<style scoped>
-.list {
-  height: 10px;
-}
-</style>
+<style scoped></style>

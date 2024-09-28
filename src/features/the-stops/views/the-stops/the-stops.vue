@@ -34,7 +34,7 @@ const sortedStops = computed(() =>
       <div class="px-2">
         <TheSearch v-model="query" />
       </div>
-      <h4 class="px-4 py-2 d-flex align-items-center subtitle">
+      <h4 class="px-4 py-2 d-flex align-items-center h6 m-0">
         Bus stops <TheSortToggle v-model="sortType" />
       </h4>
     </header>
@@ -42,8 +42,4 @@ const sortedStops = computed(() =>
   </section>
 </template>
 
-<style scoped>
-.subtitle {
-  font-size: 0.8rem;
-}
-</style>
+<style scoped></style>

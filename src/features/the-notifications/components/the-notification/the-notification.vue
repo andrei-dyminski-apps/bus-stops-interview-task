@@ -15,7 +15,7 @@ defineProps<NotificationItem>();
   >
     <div class="d-flex flex-column gap-2">
       <h3
-        class="title"
+        class="h5 m-0"
         :class="{
           'text-warning': type === NotificationType.WARNING,
           'table-success': type === NotificationType.SUCCESS,
@@ -38,10 +38,6 @@ defineProps<NotificationItem>();
 </template>
 
 <style scoped lang="scss">
-.title {
-  font-size: 1.25rem;
-}
-
 .close {
   margin-top: -12px;
   margin-right: -16px;

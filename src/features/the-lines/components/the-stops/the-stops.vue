@@ -30,7 +30,7 @@ const sortedStops = computed(() =>
     <template v-if="lineItem">
       <header class="px-4 border-bottom border-opacity-50 py-3">
         <h2 class="py-2 h6">Bus line: {{ lineItem.name }}</h2>
-        <h3 class="py-2 d-flex align-items-center subtitle">
+        <h3 class="py-2 d-flex align-items-center h6 m-0">
           Bus stops <TheSortToggle v-model="sortType" />
         </h3>
       </header>
@@ -47,8 +47,4 @@ const sortedStops = computed(() =>
   </section>
 </template>
 
-<style scoped>
-.subtitle {
-  font-size: 0.8rem;
-}
-</style>
+<style scoped></style>

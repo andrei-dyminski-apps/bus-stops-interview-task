@@ -2,7 +2,7 @@
 
 <template>
   <header>
-    <h1 class="h2">Timetable</h1>
+    <h1 class="h2 lh-1">Timetable</h1>
   </header>
 </template>
 

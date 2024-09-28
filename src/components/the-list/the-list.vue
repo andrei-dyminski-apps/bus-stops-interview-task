@@ -22,7 +22,7 @@ const handleMounted = () => {
   <ul
     v-if="items.length"
     ref="listRef"
-    class="overflow-auto flex-grow-1 list"
+    class="overflow-auto flex-grow-1 list list-unstyled"
     @vue:mounted="handleMounted"
   >
     <li

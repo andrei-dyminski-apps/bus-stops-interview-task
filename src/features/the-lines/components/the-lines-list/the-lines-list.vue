@@ -12,7 +12,7 @@ const store = useStore(STORE_KEY);
     <header class="py-3">
       <h2 class="h6">Select bus line</h2>
     </header>
-    <ul class="d-flex flex-wrap gap-2">
+    <ul class="d-flex flex-wrap gap-2 list-unstyled">
       <li v-for="{ name } in store.state.lines" :key="name">
         <TheLineToggle :to="`${LINES_ROUTE}/${name}`" :name="name" />
       </li>
