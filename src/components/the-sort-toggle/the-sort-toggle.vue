@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, toRefs } from "vue";
+import { onMounted, toRefs, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { isSortType } from "@/predicates/sortings";
 import { getRouteQueryValue } from "@/utils/route-query-value";
@@ -29,12 +29,15 @@ const handleToggle = () => {
   if (value) setSortType(value);
 };
 
-onMounted(() => {
+const initSortType = () => {
   const value = getRouteQueryValue(route.query[listName.value]);
   if (!value || !isSortType(value)) setSortType(SortTypes.ASC);
   if (value && value !== modelValue.value && isSortType(value))
     setSortType(value);
-});
+};
+
+onMounted(initSortType);
+watch(route, initSortType);
 </script>
 
 <template>
