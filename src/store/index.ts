@@ -6,8 +6,9 @@ import {
   SET_LINES_MUTATION,
   SET_STOPS_MUTATION,
 } from "@/constants/store";
-import { prepareLinesFromStops, processStops } from "@/utils/process-store";
+import { prepareLinesFromStops } from "@/utils/process-store";
 import { convertStringToKebabCase } from "@/utils/convert-string";
+import { processStops } from "@/utils/process-stops";
 import { createStore, type Store } from "vuex";
 import type { InjectionKey } from "vue";
 import type { LineItem, LineStop, RootState, Stop } from "@/types/store";

@@ -2,18 +2,7 @@ import { sortItemsByNameField } from "@/utils/sort-items-by-name";
 import { completeTime } from "@/utils/complete-time";
 import { getUniqueItems } from "@/utils/get-unique-items";
 import { SortTypes } from "@/types/sorting";
-import type { LineItem, LineObject, Stop, StopItem } from "@/types/store";
-
-export const processStops = (stops: Stop[]): StopItem[] =>
-  Object.values(
-    stops.reduce(
-      (acc, { order, stop }) => {
-        acc[stop] = { order, name: stop };
-        return acc;
-      },
-      {} as Record<string, StopItem>,
-    ),
-  );
+import type { LineItem, LineObject, Stop } from "@/types/store";
 
 export const prepareLinesFromStops = (stops: Stop[]): LineItem[] => {
   const items = Object.values(
