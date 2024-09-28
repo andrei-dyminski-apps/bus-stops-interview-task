@@ -1,4 +1,7 @@
-export const highlightQueryString = (text: string, query: string): string => {
+export const highlightQueryString = (
+  text: string,
+  query: string | null,
+): string => {
   if (!query?.length) return text;
   const escapedQuery = query.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
   return text.replace(

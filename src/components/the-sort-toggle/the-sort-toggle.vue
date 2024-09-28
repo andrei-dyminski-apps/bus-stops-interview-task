@@ -1,22 +1,40 @@
 <script setup lang="ts">
-import { toRefs } from "vue";
-import { SortTypes } from "@/types/sorting";
+import { onMounted, toRefs } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { isSortType } from "@/predicates/sortings";
+import { getRouteQueryValue } from "@/utils/route-query-value";
+import { SortListNames, SortTypes } from "@/types/sorting";
 
 const emit = defineEmits<{
   "update:modelValue": [value: SortTypes];
 }>();
 
 const props = defineProps<{
+  listName: SortListNames;
   modelValue: SortTypes;
 }>();
-const { modelValue } = toRefs(props);
+const { listName, modelValue } = toRefs(props);
+const router = useRouter();
+const route = useRoute();
+
+const setSortType = (value: SortTypes) => {
+  emit("update:modelValue", value);
+  router.push({ query: { ...route.query, [listName.value]: value } });
+};
 
 const handleToggle = () => {
   const value = Object.values(SortTypes).find(
     (value) => value !== modelValue.value,
   );
-  if (value) emit("update:modelValue", value);
+  if (value) setSortType(value);
 };
+
+onMounted(() => {
+  const value = getRouteQueryValue(route.query[listName.value]);
+  if (!value || !isSortType(value)) setSortType(SortTypes.ASC);
+  if (value && value !== modelValue.value && isSortType(value))
+    setSortType(value);
+});
 </script>
 
 <template>
@@ -44,9 +62,11 @@ const handleToggle = () => {
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
   }
+
   &:first-child {
     border-bottom: 6px solid currentColor;
   }
+
   &:last-child {
     border-top: 6px solid currentColor;
   }

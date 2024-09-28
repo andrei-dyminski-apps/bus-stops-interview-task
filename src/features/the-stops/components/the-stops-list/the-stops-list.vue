@@ -3,18 +3,19 @@ import { highlightQueryString } from "../../utils";
 import { TheList } from "@/components/the-list";
 import { TheStopToggle } from "../the-stop-toggle";
 import { useRoute } from "vue-router";
+import { getRouteParamValue } from "@/utils/route-param-value";
 import type { StopItem } from "@/types/store";
 
 defineProps<{
   items: StopItem[];
-  query: string;
+  query: string | null;
 }>();
 
 const route = useRoute();
 </script>
 
 <template>
-  <TheList :items="items" :active-item="route.params.stop?.toString()">
+  <TheList :items="items" :active-item="getRouteParamValue(route.params.stop)">
     <template #item="{ item: { name } }">
       <TheStopToggle :path="name" :stop="highlightQueryString(name, query)" />
     </template>

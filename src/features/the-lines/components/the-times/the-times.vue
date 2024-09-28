@@ -10,7 +10,8 @@ import { TheSortToggle } from "@/components/the-sort-toggle";
 import { STORE_KEY } from "@/store";
 import { TheList } from "@/components/the-list";
 import { TheTimeToggle } from "../the-time-toggle";
-import { SortTypes } from "@/types/sorting";
+import { getRouteParamValue } from "@/utils/route-param-value";
+import { SortListNames, SortTypes } from "@/types/sorting";
 
 const store = useStore(STORE_KEY);
 const route = useRoute();
@@ -39,12 +40,13 @@ const sortedTimes = computed(() =>
       <header class="px-4 border-bottom border-opacity-50 py-3">
         <h2 class="py-2 h6">Bus stop: {{ stopItem.name }}</h2>
         <h3 class="py-2 d-flex align-items-center h6 m-0">
-          Time <TheSortToggle v-model="sortType" />
+          Time
+          <TheSortToggle v-model="sortType" :list-name="SortListNames.TIMES" />
         </h3>
       </header>
       <TheList
         :items="sortedTimes"
-        :active-item="route.params.time?.toString()"
+        :active-item="getRouteParamValue(route.params.time)"
       >
         <template #item="{ item: { name } }">
           <TheTimeToggle

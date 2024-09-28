@@ -6,23 +6,22 @@ import { TheSortToggle } from "@/components/the-sort-toggle";
 import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
 import { TheSearch, TheStopsList } from "../../components";
 import { STORE_KEY } from "@/store";
-import { SortTypes } from "@/types/sorting";
-import type { StopItem } from "@/types/store";
 import { STOPS_ROUTE } from "@/constants/router";
+import { getRouteQueryValue } from "@/utils/route-query-value";
+import { filterStopsByQuery } from "../../utils";
+import { SortListNames, SortTypes } from "@/types/sorting";
+import type { StopItem } from "@/types/store";
 
 const store = useStore(STORE_KEY);
 const router = useRouter();
 
-const query = ref(router.currentRoute.value.query.search?.toString() ?? "");
+const query = ref(getRouteQueryValue(router.currentRoute.value.query.search));
 watch(query, (value) =>
   router.push({ path: STOPS_ROUTE, query: { search: value } }),
 );
 
-const filteredStops = computed(
-  () =>
-    store.state.stops?.filter((stop) =>
-      stop.name.toLowerCase().includes(query.value.toLowerCase()),
-    ) ?? [],
+const filteredStops = computed(() =>
+  filterStopsByQuery(store.state.stops, query.value),
 );
 
 const sortType = ref(SortTypes.ASC);
@@ -38,7 +37,8 @@ const sortedStops = computed(() =>
         <TheSearch v-model="query" />
       </div>
       <h4 class="px-4 py-2 d-flex align-items-center h6 m-0">
-        Bus stops <TheSortToggle v-model="sortType" />
+        Bus stops
+        <TheSortToggle v-model="sortType" :list-name="SortListNames.STOPS" />
       </h4>
     </header>
     <TheStopsList :items="sortedStops" :query="query" />

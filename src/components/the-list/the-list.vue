@@ -1,30 +1,29 @@
 <script setup lang="ts" generic="T extends LineStop | Time">
 import { convertStringToKebabCase } from "@/utils/convert-string";
-import { ref, toRefs } from "vue";
+import { nextTick, ref, toRefs, watch } from "vue";
 import type { LineStop, Time } from "@/types/store";
 
 const props = defineProps<{
   items: T[];
   activeItem?: string;
 }>();
-const { activeItem } = toRefs(props);
+const { items, activeItem } = toRefs(props);
 
 const listRef = ref<HTMLUListElement | null>(null);
-const handleMounted = () => {
-  const item = listRef.value?.querySelector(
-    `[data-name="${activeItem.value}"]`,
-  );
-  if (item) item.scrollIntoView();
+const scrollToActive = () => {
+  nextTick(() => {
+    const item = listRef.value?.querySelector(
+      `[data-name="${activeItem.value}"]`,
+    );
+    if (item) item.scrollIntoView();
+    else listRef.value?.scrollTo(0, 0);
+  });
 };
+watch(items, scrollToActive, { immediate: true });
 </script>
 
 <template>
-  <ul
-    v-if="items.length"
-    ref="listRef"
-    class="overflow-auto flex-grow-1 list list-unstyled"
-    @vue:mounted="handleMounted"
-  >
+  <ul ref="listRef" class="overflow-auto flex-grow-1 list list-unstyled">
     <li
       v-for="item in items"
       :key="item.name"

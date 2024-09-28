@@ -7,7 +7,7 @@ const emit = defineEmits<{
 }>();
 
 defineProps<{
-  modelValue: string;
+  modelValue: string | null;
 }>();
 
 const handleInput = (event: Event) =>

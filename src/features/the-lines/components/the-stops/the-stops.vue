@@ -10,7 +10,8 @@ import { TheSortToggle } from "@/components/the-sort-toggle";
 import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
 import { STORE_KEY } from "@/store";
 import { TheList } from "@/components/the-list";
-import { SortTypes } from "@/types/sorting";
+import { getRouteParamValue } from "@/utils/route-param-value";
+import { SortListNames, SortTypes } from "@/types/sorting";
 
 const store = useStore(STORE_KEY);
 const route = useRoute();
@@ -31,12 +32,13 @@ const sortedStops = computed(() =>
       <header class="px-4 border-bottom border-opacity-50 py-3">
         <h2 class="py-2 h6">Bus line: {{ lineItem.name }}</h2>
         <h3 class="py-2 d-flex align-items-center h6 m-0">
-          Bus stops <TheSortToggle v-model="sortType" />
+          Bus stops
+          <TheSortToggle v-model="sortType" :list-name="SortListNames.STOPS" />
         </h3>
       </header>
       <TheList
         :items="sortedStops"
-        :active-item="route.params.stop?.toString()"
+        :active-item="getRouteParamValue(route.params.stop)"
       >
         <template #item="{ item: { name } }">
           <TheStopToggle :stop="name" :line="lineItem.name" />

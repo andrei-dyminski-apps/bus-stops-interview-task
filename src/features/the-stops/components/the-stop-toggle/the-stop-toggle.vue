@@ -21,7 +21,7 @@ const to = computed(() => ({
   <RouterLink
     :to="to"
     class="px-4 py-3 border-bottom border-opacity-50 d-block text-decoration-none"
-    active-class="text-primary router-link-exact-active"
+    exact-active-class="text-primary router-link-exact-active fw-bold"
   >
     <span v-html="stop" />
   </RouterLink>

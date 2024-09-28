@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { LINES_ROUTE } from "@/constants/router";
-import { toRefs } from "vue";
+import { computed, toRefs } from "vue";
 import { convertStringToKebabCase } from "@/utils/convert-string";
+import { useRoute } from "vue-router";
 
 const props = defineProps<{
   time: string;
@@ -9,14 +10,19 @@ const props = defineProps<{
   stop: string;
 }>();
 const { time, stop, line } = toRefs(props);
-const path = `${LINES_ROUTE}/${line.value}/${convertStringToKebabCase(stop.value)}/${convertStringToKebabCase(time.value)}`;
+
+const route = useRoute();
+const to = computed(() => ({
+  path: `${LINES_ROUTE}/${line.value}/${convertStringToKebabCase(stop.value)}/${convertStringToKebabCase(time.value)}`,
+  query: route.query,
+}));
 </script>
 
 <template>
   <RouterLink
-    :to="path"
+    :to="to"
     class="px-4 py-3 border-bottom border-opacity-50 d-block text-decoration-none"
-    exact-active-class="text-primary router-link-exact-active"
+    exact-active-class="text-primary router-link-exact-active fw-bold"
   >
     {{ time }}</RouterLink
   >
