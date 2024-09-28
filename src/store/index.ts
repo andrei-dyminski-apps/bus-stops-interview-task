@@ -6,7 +6,7 @@ import {
   SET_LINES_MUTATION,
   SET_STOPS_MUTATION,
 } from "@/constants/store";
-import { prepareLinesFromStops } from "@/utils/process-store";
+import { prepareLinesFromStops } from "@/utils/prepare-lines";
 import { convertStringToKebabCase } from "@/utils/convert-string";
 import { processStops } from "@/utils/process-stops";
 import { createStore, type Store } from "vuex";

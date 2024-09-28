@@ -1,4 +1,4 @@
-import { sortItemsByNameField } from "@/utils/sort-items-by-name";
+import { sortItemsByNameProp } from "@/utils/sort-items-by-name";
 import { completeTime } from "@/utils/complete-time";
 import { getUniqueItems } from "@/utils/get-unique-items";
 import { SortTypes } from "@/types/sorting";
@@ -35,7 +35,7 @@ export const prepareLinesFromStops = (stops: Stop[]): LineItem[] => {
     ) ?? {},
   );
 
-  return sortItemsByNameField(
+  return sortItemsByNameProp(
     items.map(({ name, stops }) => ({
       name,
       stops: Object.values(stops).map(({ order, name, times }) => ({
