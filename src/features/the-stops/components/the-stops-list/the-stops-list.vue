@@ -16,7 +16,7 @@ const route = useRoute();
 <template>
   <TheList :items="items" :active-item="route.params.stop?.toString()">
     <template #item="{ item: { name } }">
-      <TheStopToggle :stop="highlightQueryString(name, query)" />
+      <TheStopToggle :path="name" :stop="highlightQueryString(name, query)" />
     </template>
   </TheList>
 </template>

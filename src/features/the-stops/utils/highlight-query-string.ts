@@ -3,6 +3,6 @@ export const highlightQueryString = (text: string, query: string): string => {
   const escapedQuery = query.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
   return text.replace(
     new RegExp(escapedQuery, "gi"),
-    (match) => `<mark>${match}</mark>`,
+    (match) => `<mark class="px-0">${match}</mark>`,
   );
 };

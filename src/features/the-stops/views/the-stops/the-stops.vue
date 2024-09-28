@@ -8,12 +8,15 @@ import { TheSearch, TheStopsList } from "../../components";
 import { STORE_KEY } from "@/store";
 import { SortTypes } from "@/types/sorting";
 import type { StopItem } from "@/types/store";
+import { STOPS_ROUTE } from "@/constants/router";
 
 const store = useStore(STORE_KEY);
 const router = useRouter();
 
 const query = ref(router.currentRoute.value.query.search?.toString() ?? "");
-watch(query, (value) => router.push({ query: { search: value } }));
+watch(query, (value) =>
+  router.push({ path: STOPS_ROUTE, query: { search: value } }),
+);
 
 const filteredStops = computed(
   () =>
