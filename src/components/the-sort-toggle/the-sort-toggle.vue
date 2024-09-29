@@ -2,7 +2,7 @@
 import { onMounted, toRefs, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { isSortType } from "@/predicates/sortings";
-import { getRouteQueryValue } from "@/utils/route-query-value";
+import { getRouteQuery } from "@/utils/get-route-query";
 import { SortListNames, SortTypes } from "@/types/sorting";
 
 const emit = defineEmits<{
@@ -30,7 +30,7 @@ const handleToggle = () => {
 };
 
 const initSortType = () => {
-  const value = getRouteQueryValue(route.query[listName.value]);
+  const value = getRouteQuery(route.query[listName.value]);
   if (!value || !isSortType(value)) setSortType(SortTypes.ASC);
   if (value && value !== modelValue.value && isSortType(value))
     setSortType(value);

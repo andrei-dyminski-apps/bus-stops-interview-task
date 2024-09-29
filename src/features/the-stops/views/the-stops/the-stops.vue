@@ -7,7 +7,7 @@ import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
 import { TheSearch, TheStopsList } from "../../components";
 import { STORE_KEY } from "@/store";
 import { STOPS_ROUTE } from "@/constants/router";
-import { getRouteQueryValue } from "@/utils/route-query-value";
+import { getRouteQuery } from "@/utils/get-route-query";
 import { filterStopsByQuery } from "../../utils";
 import { SortListNames, SortTypes } from "@/types/sorting";
 import type { StopItem } from "@/types/store";
@@ -16,7 +16,7 @@ const store = useStore(STORE_KEY);
 const router = useRouter();
 const route = useRoute();
 
-const query = ref(getRouteQueryValue(route.query.search));
+const query = ref(getRouteQuery(route.query.search));
 watch(query, (value) =>
   router.push({ path: STOPS_ROUTE, query: { ...route.query, search: value } }),
 );
