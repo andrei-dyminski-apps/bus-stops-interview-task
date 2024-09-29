@@ -12,7 +12,8 @@ export const SORT_FUNCTIONS_BY_ORDER = {
   ): number => b.order - a.order,
 };
 
-export const sortItemsByOrderField = <T extends LineStop | StopItem = LineStop>(
+export const sortItemsByOrderProp = <T extends LineStop | StopItem = LineStop>(
   items: T[] | undefined,
   order: SortTypes,
-): T[] => (items ? [...items].sort(SORT_FUNCTIONS_BY_ORDER[order]) : []);
+): T[] =>
+  items?.length ? [...items].sort(SORT_FUNCTIONS_BY_ORDER[order]) : [];

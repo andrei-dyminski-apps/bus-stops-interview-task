@@ -7,7 +7,7 @@ import { ThePlaceholder } from "../the-placeholder";
 import { TheStopToggle } from "../the-stop-toggle";
 import { LINE_PLACEHOLDER } from "../../constants";
 import { TheSortToggle } from "@/components/the-sort-toggle";
-import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
+import { sortItemsByOrderProp } from "@/utils/sort-items-by-order";
 import { STORE_KEY } from "@/store";
 import { TheList } from "@/components/the-list";
 import { getRouteParam } from "@/utils/get-route-param";
@@ -22,7 +22,7 @@ const lineItem = computed(() =>
 
 const sortType = ref(SortTypes.ASC);
 const sortedStops = computed(() =>
-  sortItemsByOrderField(lineItem.value?.stops, sortType.value),
+  sortItemsByOrderProp(lineItem.value?.stops, sortType.value),
 );
 </script>
 

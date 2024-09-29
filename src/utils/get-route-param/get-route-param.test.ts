@@ -17,6 +17,6 @@ describe("getRouteParamValue", () => {
   it("returns an undefined when input is undefined", () => {
     const value = undefined;
     const result = getRouteParam(value);
-    expect(result).toBe(undefined);
+    expect(result).toBeUndefined();
   });
 });

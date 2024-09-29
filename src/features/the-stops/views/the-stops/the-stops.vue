@@ -3,7 +3,7 @@ import { useStore } from "vuex";
 import { computed, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { TheSortToggle } from "@/components/the-sort-toggle";
-import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
+import { sortItemsByOrderProp } from "@/utils/sort-items-by-order";
 import { TheSearch, TheStopsList } from "../../components";
 import { STORE_KEY } from "@/store";
 import { STOPS_ROUTE } from "@/constants/router";
@@ -27,7 +27,7 @@ const filteredStops = computed(() =>
 
 const sortType = ref(SortTypes.ASC);
 const sortedStops = computed(() =>
-  sortItemsByOrderField<StopItem>(filteredStops.value, sortType.value),
+  sortItemsByOrderProp<StopItem>(filteredStops.value, sortType.value),
 );
 </script>
 
