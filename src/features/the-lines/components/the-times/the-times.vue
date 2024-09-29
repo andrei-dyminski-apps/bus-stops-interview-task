@@ -10,7 +10,7 @@ import { TheSortToggle } from "@/components/the-sort-toggle";
 import { STORE_KEY } from "@/store";
 import { TheList } from "@/components/the-list";
 import { TheTimeToggle } from "../the-time-toggle";
-import { getRouteParamValue } from "@/utils/get-route-param-value";
+import { getRouteParam } from "@/utils/get-route-param";
 import { SortListNames, SortTypes } from "@/types/sorting";
 
 const store = useStore(STORE_KEY);
@@ -46,7 +46,7 @@ const sortedTimes = computed(() =>
       </header>
       <TheList
         :items="sortedTimes"
-        :active-item="getRouteParamValue(route.params.time)"
+        :active-item="getRouteParam(route.params.time)"
       >
         <template #item="{ item: { name } }">
           <TheTimeToggle

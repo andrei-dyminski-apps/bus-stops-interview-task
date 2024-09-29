@@ -10,7 +10,7 @@ import { TheSortToggle } from "@/components/the-sort-toggle";
 import { sortItemsByOrderField } from "@/utils/sort-items-by-order";
 import { STORE_KEY } from "@/store";
 import { TheList } from "@/components/the-list";
-import { getRouteParamValue } from "@/utils/get-route-param-value";
+import { getRouteParam } from "@/utils/get-route-param";
 import { SortListNames, SortTypes } from "@/types/sorting";
 
 const store = useStore(STORE_KEY);
@@ -38,7 +38,7 @@ const sortedStops = computed(() =>
       </header>
       <TheList
         :items="sortedStops"
-        :active-item="getRouteParamValue(route.params.stop)"
+        :active-item="getRouteParam(route.params.stop)"
       >
         <template #item="{ item: { name } }">
           <TheStopToggle :stop="name" :line="lineItem.name" />
