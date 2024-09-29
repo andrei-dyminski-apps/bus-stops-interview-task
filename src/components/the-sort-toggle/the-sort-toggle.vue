@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, toRefs, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { isSortType } from "@/predicates/sortings";
+import { isSortType } from "@/predicates/is-sort-type";
 import { getRouteQuery } from "@/utils/get-route-query";
 import { SortListNames, SortTypes } from "@/types/sorting";
 
