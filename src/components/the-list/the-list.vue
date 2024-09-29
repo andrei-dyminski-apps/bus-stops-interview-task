@@ -23,7 +23,7 @@ watch(items, scrollToActive, { immediate: true });
 </script>
 
 <template>
-  <ul ref="listRef" class="overflow-auto flex-grow-1 list list-unstyled">
+  <ul ref="listRef" class="overflow-auto flex-lg-grow-1 list list-unstyled">
     <li
       v-for="item in items"
       :key="item.name"
@@ -36,6 +36,12 @@ watch(items, scrollToActive, { immediate: true });
 
 <style scoped>
 .list {
-  height: 10px;
+  height: 300px;
+}
+
+@media (max-width: var(--bs-breakpoint-lg)) {
+  .list {
+    height: 10px;
+  }
 }
 </style>

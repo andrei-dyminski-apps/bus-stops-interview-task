@@ -6,7 +6,7 @@ defineProps<{
 
 <template>
   <div
-    class="d-flex justify-content-center align-items-center wrapper rounded-2 flex-grow-1"
+    class="d-flex justify-content-center align-items-center wrapper rounded-2 flex-grow-1 text-center px-3 py-3"
   >
     <p class="text-black-50">{{ text }}</p>
   </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-hidden">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
-  <body class="d-flex h-100 position-absolute w-100">
+  <body class="d-flex h-100 position-absolute w-100 overflow-y-auto top-0 flex-lg-row flex-column">
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app" class="w-100 d-flex container py-5"></div>
+    <div id="app" class="w-100 d-flex container py-4 py-lg-5"></div>
     <!-- built files will be auto injected -->
   </body>
 </html>
