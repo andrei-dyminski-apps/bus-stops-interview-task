@@ -34,7 +34,7 @@ const sortedStops = computed(() =>
 <template>
   <section class="d-flex flex-column rounded-2 bg-white flex-grow-1">
     <header class="border-bottom border-opacity-50 py-2">
-      <div class="px-2">
+      <div class="px-2 d-flex">
         <TheSearch v-model="query" />
       </div>
       <h4 class="px-4 py-2 d-flex align-items-center h6 m-0">

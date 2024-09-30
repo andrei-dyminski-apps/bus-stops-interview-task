@@ -17,11 +17,12 @@ const handleClear = () => emit("update:modelValue", "");
 </script>
 
 <template>
-  <label class="position-relative w-25">
+  <label class="position-relative w-25 flex-lg-grow-0 flex-grow-1">
     <input
       :value="modelValue"
       class="px-3 w-100 border border-1 border-dark py-2 border-opacity-25 rounded-2"
       type="text"
+      placeholder="Search..."
       @input="handleInput"
     />
     <transition name="fade">
