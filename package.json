@@ -1,6 +1,6 @@
 {
-  "name": "interview-task-frontend",
-  "version": "0.1.0",
+  "name": "timetable",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "npx kill-port 8080 && vue-cli-service serve",

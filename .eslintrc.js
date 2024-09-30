@@ -1,3 +1,5 @@
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
+
 module.exports = {
   root: true,
   env: {
@@ -18,8 +20,8 @@ module.exports = {
     "plugin:import/typescript",
   ],
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "no-console": IS_PRODUCTION ? "warn" : "off",
+    "no-debugger": IS_PRODUCTION ? "warn" : "off",
     "vue/no-v-html": "off",
     "no-restricted-imports": ["error", { patterns: ["@/features/*/*"] }],
     "import/no-cycle": "error",
