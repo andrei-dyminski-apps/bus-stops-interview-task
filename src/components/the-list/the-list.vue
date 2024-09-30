@@ -10,8 +10,8 @@ const props = defineProps<{
 const { items, activeItem } = toRefs(props);
 
 const listRef = ref<HTMLUListElement | null>(null);
-const scrollToActive = () => {
-  nextTick(() => {
+const scrollToActive = (): void => {
+  nextTick((): void => {
     const item = listRef.value?.querySelector(
       `[data-name="${activeItem.value}"]`,
     );

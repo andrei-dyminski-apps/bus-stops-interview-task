@@ -10,10 +10,10 @@ defineProps<{
   modelValue: string | null;
 }>();
 
-const handleInput = (event: Event) =>
+const handleInput = (event: Event): void =>
   emit("update:modelValue", (event.target as HTMLInputElement).value);
 
-const handleClear = () => emit("update:modelValue", "");
+const handleClear = (): void => emit("update:modelValue", "");
 </script>
 
 <template>

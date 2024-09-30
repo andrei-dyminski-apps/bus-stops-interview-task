@@ -12,16 +12,17 @@ import { STORE_KEY } from "@/store";
 import { TheList } from "@/components/the-list";
 import { getRouteParam } from "@/utils/get-route-param";
 import { SortListNames, SortTypes } from "@/types/sorting";
+import type { LineItem, LineStop } from "@/types/store";
 
 const store = useStore(STORE_KEY);
 const route = useRoute();
 
-const lineItem = computed(() =>
+const lineItem = computed<LineItem>(() =>
   store.getters[GET_LINE_GETTER](route.params.line),
 );
 
 const sortType = ref(SortTypes.ASC);
-const sortedStops = computed(() =>
+const sortedStops = computed<LineStop[]>(() =>
   sortItemsByOrderProp(lineItem.value?.stops, sortType.value),
 );
 </script>

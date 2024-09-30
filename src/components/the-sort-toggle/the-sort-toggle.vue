@@ -17,19 +17,19 @@ const { listName, modelValue } = toRefs(props);
 const router = useRouter();
 const route = useRoute();
 
-const setSortType = (value: SortTypes) => {
+const setSortType = (value: SortTypes): void => {
   emit("update:modelValue", value);
   router.push({ query: { ...route.query, [listName.value]: value } });
 };
 
-const handleToggle = () => {
+const handleToggle = (): void => {
   const value = Object.values(SortTypes).find(
-    (value) => value !== modelValue.value,
+    (value): boolean => value !== modelValue.value,
   );
   if (value) setSortType(value);
 };
 
-const initSortType = () => {
+const initSortType = (): void => {
   const value = getRouteQuery(route.query[listName.value]);
   if (!value || !isSortType(value)) setSortType(SortTypes.ASC);
   if (value && value !== modelValue.value && isSortType(value))

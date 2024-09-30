@@ -2,7 +2,7 @@
 import { LINES_ROUTE } from "@/constants/router";
 import { computed, toRefs } from "vue";
 import { convertStringToKebabCase } from "@/utils/convert-string";
-import { useRoute } from "vue-router";
+import { type RouteLocationRaw, useRoute } from "vue-router";
 
 const props = defineProps<{
   line: string;
@@ -11,7 +11,7 @@ const props = defineProps<{
 const { stop, line } = toRefs(props);
 
 const route = useRoute();
-const to = computed(() => ({
+const to = computed<RouteLocationRaw>(() => ({
   path: `${LINES_ROUTE}/${line.value}/${convertStringToKebabCase(stop.value)}`,
   query: route.query,
 }));

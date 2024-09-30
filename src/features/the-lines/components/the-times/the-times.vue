@@ -12,24 +12,25 @@ import { TheList } from "@/components/the-list";
 import { TheTimeToggle } from "../the-time-toggle";
 import { getRouteParam } from "@/utils/get-route-param";
 import { SortListNames, SortTypes } from "@/types/sorting";
+import type { LineItem, LineStop, Time } from "@/types/store";
 
 const store = useStore(STORE_KEY);
 const route = useRoute();
 
-const lineItem = computed(() =>
+const lineItem = computed<LineItem>(() =>
   store.getters[GET_LINE_GETTER](route.params.line),
 );
 
-const stopItem = computed(() =>
+const stopItem = computed<LineStop>(() =>
   store.getters[GET_STOP_GETTER](route.params.line, route.params.stop),
 );
 
-const placeholderText = computed(() =>
+const placeholderText = computed<string>(() =>
   lineItem.value ? STOP_PLACEHOLDER : LINE_PLACEHOLDER,
 );
 
 const sortType = ref(SortTypes.ASC);
-const sortedTimes = computed(() =>
+const sortedTimes = computed<Time[]>(() =>
   sortItemsByNameProp(stopItem.value?.times, sortType.value),
 );
 </script>

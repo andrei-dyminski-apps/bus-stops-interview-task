@@ -21,12 +21,12 @@ watch(query, (value) =>
   router.push({ path: STOPS_ROUTE, query: { ...route.query, search: value } }),
 );
 
-const filteredStops = computed(() =>
+const filteredStops = computed<StopItem[]>(() =>
   filterStopsByQuery(store.state.stops, query.value),
 );
 
 const sortType = ref(SortTypes.ASC);
-const sortedStops = computed(() =>
+const sortedStops = computed<StopItem[]>(() =>
   sortItemsByOrderProp<StopItem>(filteredStops.value, sortType.value),
 );
 </script>
